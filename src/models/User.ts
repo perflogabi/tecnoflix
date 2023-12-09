@@ -13,11 +13,11 @@ export interface User {
   role: 'admin' | 'user'
 }
 
-export interface UserCreationAttributes
-  extends Optional<User, 'id'> {}
 
-export interface UserInstance
-  extends Model<User, UserCreationAttributes>, User {}
+
+export interface UserCreationAttributes extends Optional<User, 'id'> {}
+
+export interface UserInstance extends Model<User, UserCreationAttributes>, User {}
 
 const User = sequelize.define<UserInstance, User>('users', {
   id: {
