@@ -1,6 +1,17 @@
 import { Favorite } from "../models/Favorite"
 
 export const favoriteService = {
+  isFavorited: async (userId: number, courseId: number) => {
+    const favorite = await Favorite.findOne({
+      where: {
+        userId,
+        courseId
+      }
+    })
+
+    return favorite !== null
+  },
+
   findByUserId: async (userId: number) => {
     const favorites = await Favorite.findAll({
       attributes: [['user_id', 'userId']],
